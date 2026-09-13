@@ -1,0 +1,130 @@
+[
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-clipchamp",
+    "displayName": "Remove Microsoft Clipchamp",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Clipchamp AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Clipchamp.Clipchamp"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-dev-home",
+    "displayName": "Remove Dev Home",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Dev Home AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.Windows.DevHome"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-solitaire",
+    "displayName": "Remove Microsoft Solitaire Collection",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Solitaire Collection AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.MicrosoftSolitaireCollection"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-feedback-hub",
+    "displayName": "Remove Feedback Hub",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Feedback Hub AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.WindowsFeedbackHub"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-get-help",
+    "displayName": "Remove Get Help",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Get Help AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.GetHelp"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-bing-news",
+    "displayName": "Remove Microsoft News",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft News AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.BingNews"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-bing-weather",
+    "displayName": "Remove Microsoft Weather",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Weather AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.BingWeather"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "apps.remove-phone-link",
+    "displayName": "Remove Phone Link",
+    "requiresElevation": true,
+    "description": "Removes the Microsoft Phone Link AppX package from the current Windows user.",
+    "category": "Apps",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "none",
+    "target": {
+        "type": "appxPackage",
+        "operation": "remove",
+        "name": "Microsoft.YourPhone"
+    }
+}
+]

@@ -1,0 +1,838 @@
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MARIOSL35 Windows Tools"
+        Width="1320"
+        Height="720"
+        MinWidth="1100"
+        MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResize"
+        FontFamily="Consolas"
+        Background="{DynamicResource WindowBackgroundBrush}"
+        Foreground="{DynamicResource PrimaryTextBrush}">
+
+    <Window.Resources>
+
+        <!-- DARK THEME -->
+        <SolidColorBrush x:Key="WindowBackgroundBrush"
+                         Color="#0A0C0B"/>
+
+        <SolidColorBrush x:Key="SurfaceBrush"
+                         Color="#0D100E"/>
+
+        <SolidColorBrush x:Key="PrimaryTextBrush"
+                         Color="#E8EEE9"/>
+
+        <SolidColorBrush x:Key="SecondaryTextBrush"
+                         Color="#69756D"/>
+
+        <SolidColorBrush x:Key="MutedTextBrush"
+                         Color="#59645D"/>
+
+        <SolidColorBrush x:Key="BorderBrush"
+                         Color="#202722"/>
+
+        <SolidColorBrush x:Key="AccentBrush"
+                         Color="#7FD99A"/>
+
+        <SolidColorBrush x:Key="ButtonBackgroundBrush"
+                         Color="#151A17"/>
+
+        <SolidColorBrush x:Key="ButtonBorderBrush"
+                         Color="#242C27"/>
+
+
+        <!-- CHECKBOX -->
+        <Style x:Key="MarioslCheckBox"
+               TargetType="{x:Type CheckBox}">
+
+            <Setter Property="Foreground"
+                    Value="{DynamicResource PrimaryTextBrush}"/>
+
+            <Setter Property="FontFamily"
+                    Value="Consolas"/>
+
+            <Setter Property="FontSize"
+                    Value="14"/>
+
+            <Setter Property="Margin"
+                    Value="0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- TOGGLE BOX -->
+                            <Border x:Name="ToggleBox"
+                                    Grid.Column="0"
+                                    Width="14"
+                                    Height="14"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    Background="{DynamicResource ButtonBackgroundBrush}"
+                                    BorderBrush="{DynamicResource BorderBrush}"
+                                    BorderThickness="1"/>
+
+                            <!-- TEXT -->
+                            <ContentPresenter Grid.Column="1"
+                                              Margin="8,0,0,0"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              RecognizesAccessKey="True"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              TextElement.FontFamily="{TemplateBinding FontFamily}"
+                                              TextElement.FontSize="{TemplateBinding FontSize}"/>
+
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- HOVER -->
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                                <Setter TargetName="ToggleBox"
+                                        Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- CHECKED -->
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+
+                                <Setter TargetName="ToggleBox"
+                                        Property="Background"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                                <Setter TargetName="ToggleBox"
+                                        Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- DISABLED -->
+                            <Trigger Property="IsEnabled"
+                                     Value="False">
+
+                                <Setter TargetName="ToggleBox"
+                                        Property="Opacity"
+                                        Value="0.45"/>
+
+                                <Setter Property="Opacity"
+                                        Value="0.65"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+
+        <!-- TAB -->
+        <Style x:Key="MarioslTab"
+               TargetType="{x:Type Button}">
+
+            <Setter Property="Background"
+                    Value="Transparent"/>
+
+            <Setter Property="BorderThickness"
+                    Value="0"/>
+
+            <Setter Property="Padding"
+                    Value="14,8"/>
+
+            <Setter Property="FontFamily"
+                    Value="Consolas"/>
+
+            <Setter Property="FontSize"
+                    Value="13"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Border x:Name="TabBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="Transparent"
+                                BorderThickness="0,0,0,1"
+                                Padding="{TemplateBinding Padding}">
+
+                            <ContentPresenter x:Name="TabContent"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Content="{TemplateBinding Content}"
+                                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                              RecognizesAccessKey="True"
+                                              TextElement.Foreground="{TemplateBinding Foreground}"
+                                              TextElement.FontFamily="Consolas"
+                                              TextElement.FontSize="13"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- HOVER -->
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                                <Setter TargetName="TabBorder"
+                                        Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- PRESSED -->
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+
+                                <Setter TargetName="TabContent"
+                                        Property="TextElement.Foreground"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                                <Setter TargetName="TabBorder"
+                                        Property="Background"
+                                        Value="{DynamicResource ButtonBackgroundBrush}"/>
+
+                                <Setter TargetName="TabBorder"
+                                        Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- DISABLED -->
+                            <Trigger Property="IsEnabled"
+                                     Value="False">
+
+                                <Setter Property="Opacity"
+                                        Value="0.45"/>
+
+                                <Setter Property="Cursor"
+                                        Value="Arrow"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+
+        <!-- SCROLLBAR -->
+<Style x:Key="MarioslScrollBar"
+       TargetType="{x:Type ScrollBar}">
+
+    <Setter Property="Width"
+            Value="6"/>
+
+    <Setter Property="Background"
+            Value="Transparent"/>
+
+    <Setter Property="Foreground"
+            Value="{DynamicResource AccentBrush}"/>
+
+    <Setter Property="Template">
+        <Setter.Value>
+
+            <ControlTemplate TargetType="{x:Type ScrollBar}">
+
+                <Grid Background="Transparent">
+
+                    <Track x:Name="PART_Track"
+                           IsDirectionReversed="True">
+
+                        <Track.DecreaseRepeatButton>
+                            <RepeatButton
+                                Command="ScrollBar.LineUpCommand"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Focusable="False"/>
+                        </Track.DecreaseRepeatButton>
+
+                        <Track.Thumb>
+
+                            <Thumb
+                                Background="{DynamicResource AccentBrush}"
+                                BorderThickness="0"
+                                HorizontalAlignment="Center"
+                                Width="8"
+                                Cursor="Arrow">
+
+                                <Thumb.Template>
+                                    <ControlTemplate TargetType="{x:Type Thumb}">
+
+                                        <Border
+                                            Width="8"
+                                            HorizontalAlignment="Center"
+                                            Background="{DynamicResource AccentBrush}"
+                                            CornerRadius="5"/>
+
+                                    </ControlTemplate>
+                                </Thumb.Template>
+
+                            </Thumb>
+
+                        </Track.Thumb>
+
+                        <Track.IncreaseRepeatButton>
+                            <RepeatButton
+                                Command="ScrollBar.LineDownCommand"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                Focusable="False"/>
+                        </Track.IncreaseRepeatButton>
+
+                    </Track>
+
+                </Grid>
+
+            </ControlTemplate>
+
+        </Setter.Value>
+    </Setter>
+
+</Style>
+
+
+        <!-- ACTION BUTTON -->
+        <Style x:Key="MarioslActionButton"
+               TargetType="{x:Type Button}">
+
+            <Setter Property="Background"
+                    Value="{DynamicResource ButtonBackgroundBrush}"/>
+
+            <Setter Property="Foreground"
+                    Value="{DynamicResource SecondaryTextBrush}"/>
+
+            <Setter Property="BorderBrush"
+                    Value="{DynamicResource ButtonBorderBrush}"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="FontFamily"
+                    Value="Consolas"/>
+
+            <Setter Property="FontSize"
+                    Value="10"/>
+
+            <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                RecognizesAccessKey="True"
+                                TextElement.Foreground="{TemplateBinding Foreground}"
+                                TextElement.FontFamily="{TemplateBinding FontFamily}"
+                                TextElement.FontSize="{TemplateBinding FontSize}"
+                                TextElement.FontWeight="{TemplateBinding FontWeight}"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- HOVER -->
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                                <Setter Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- PRESSED -->
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+
+                                <Setter Property="Background"
+                                        Value="{DynamicResource BorderBrush}"/>
+
+                                <Setter Property="Foreground"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- DISABLED -->
+                            <Trigger Property="IsEnabled"
+                                     Value="False">
+
+                                <Setter Property="Opacity"
+                                        Value="0.45"/>
+
+                                <Setter Property="Cursor"
+                                        Value="Arrow"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+
+        <!-- ICON BUTTON -->
+        <Style x:Key="MarioslIconButton"
+               TargetType="{x:Type Button}">
+
+            <Setter Property="Background"
+                    Value="Transparent"/>
+
+            <Setter Property="Foreground"
+                    Value="{DynamicResource SecondaryTextBrush}"/>
+
+            <Setter Property="BorderBrush"
+                    Value="Transparent"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Border x:Name="IconButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                RecognizesAccessKey="True"
+                                TextElement.Foreground="{TemplateBinding Foreground}"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- HOVER -->
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+                                <Setter TargetName="IconButtonBorder"
+                                        Property="Background"
+                                        Value="{DynamicResource ButtonBackgroundBrush}"/>
+
+                                <Setter TargetName="IconButtonBorder"
+                                        Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- PRESSED -->
+                            <Trigger Property="IsPressed"
+                                     Value="True">
+
+                                <Setter TargetName="IconButtonBorder"
+                                        Property="Background"
+                                        Value="{DynamicResource BorderBrush}"/>
+
+                                <Setter TargetName="IconButtonBorder"
+                                        Property="BorderBrush"
+                                        Value="{DynamicResource AccentBrush}"/>
+
+                            </Trigger>
+
+                            <!-- DISABLED -->
+                            <Trigger Property="IsEnabled"
+                                     Value="False">
+
+                                <Setter Property="Opacity"
+                                        Value="0.45"/>
+
+                                <Setter Property="Cursor"
+                                        Value="Arrow"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+    </Window.Resources>
+
+
+    <!-- WINDOW -->
+    <Border Background="{DynamicResource WindowBackgroundBrush}"
+            BorderBrush="{DynamicResource BorderBrush}"
+            BorderThickness="1">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+
+
+            <!-- COMPACT APP HEADER -->
+            <Border x:Name="DragRegion"
+                    Grid.Row="0"
+                    Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="0,0,0,1">
+
+                <Grid Margin="20,0,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="40"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0"
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="MARIOSL35 / WINDOWS TOOLS"
+                                   FontSize="13"
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                    </StackPanel>
+
+
+                    <!-- CLOSE -->
+                    <Button x:Name="CloseButton"
+                            Grid.Column="1"
+                            Width="40"
+                            Height="40"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            ToolTip="Close"
+                            Style="{StaticResource MarioslIconButton}">
+
+                        <Canvas Width="14"
+                                Height="14">
+
+                            <Line x:Name="CloseLine1"
+                                  X1="2"
+                                  Y1="2"
+                                  X2="12"
+                                  Y2="12"
+                                  Stroke="{DynamicResource AccentBrush}"
+                                  StrokeThickness="1.2"/>
+
+                            <Line x:Name="CloseLine2"
+                                  X1="12"
+                                  Y1="2"
+                                  X2="2"
+                                  Y2="12"
+                                  Stroke="{DynamicResource AccentBrush}"
+                                  StrokeThickness="1.2"/>
+
+                        </Canvas>
+
+                    </Button>
+
+                </Grid>
+
+            </Border>
+
+
+            <!-- MAIN -->
+            <Grid Grid.Row="1"
+                  Margin="36,20,36,14">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="42"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <!-- NAVIGATION -->
+                <Grid Grid.Row="0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="105"/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <!-- WINDOWS APPS -->
+                    <Button x:Name="AppsTab"
+                            Grid.Column="0"
+                            Content="WINDOWS APPS"
+                            Style="{StaticResource MarioslTab}"
+                            HorizontalAlignment="Left"/>
+
+
+                    <!-- REGISTRY -->
+                    <Button x:Name="RegistryTab"
+                            Grid.Column="1"
+                            Content="REGISTRY"
+                            Style="{StaticResource MarioslTab}"
+                            HorizontalAlignment="Left"/>
+
+
+                    <!-- WINDOWS AI -->
+                    <Button x:Name="WindowsAITab"
+                            Grid.Column="2"
+                            Content="WINDOWS AI"
+                            Style="{StaticResource MarioslTab}"
+                            HorizontalAlignment="Left"/>
+
+
+                    <!-- THEME -->
+                    <Button x:Name="ThemeButton"
+                            Grid.Column="3"
+                            Width="30"
+                            Height="30"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            ToolTip="Toggle theme"
+                            Style="{StaticResource MarioslIconButton}">
+
+                        <Grid>
+
+                            <!-- MOON -->
+                            <Path x:Name="MoonIcon"
+                                  Width="15"
+                                  Height="15"
+                                  Stretch="Uniform"
+                                  Fill="{DynamicResource AccentBrush}"
+                                  Visibility="Collapsed"
+                                  Data="M15.8,2.7 C11.1,3.7 7.6,7.9 7.6,12.9 C7.6,18.7 12.3,23.3 18.1,23.3 C19.5,23.3 20.8,23 22,22.5 C19.9,24 17.3,24.9 14.5,24.9 C7.3,24.9 1.5,19.1 1.5,11.9 C1.5,6.5 4.8,1.8 9.5,0 C11.5,0.1 13.7,1 15.8,2.7 Z"/>
+
+
+                            <!-- SUN -->
+                            <Canvas x:Name="SunIcon"
+                                    Width="16"
+                                    Height="16"
+                                    Visibility="Visible">
+
+                                <Ellipse Canvas.Left="4"
+                                         Canvas.Top="4"
+                                         Width="8"
+                                         Height="8"
+                                         Fill="{DynamicResource AccentBrush}"/>
+
+                                <Line X1="8"
+                                      Y1="0"
+                                      X2="8"
+                                      Y2="3"
+                                      Stroke="{DynamicResource AccentBrush}"
+                                      StrokeThickness="1.3"/>
+
+                                <Line X1="8"
+                                      Y1="13"
+                                      X2="8"
+                                      Y2="16"
+                                      Stroke="{DynamicResource AccentBrush}"
+                                      StrokeThickness="1.3"/>
+
+                                <Line X1="0"
+                                      Y1="8"
+                                      X2="3"
+                                      Y2="8"
+                                      Stroke="{DynamicResource AccentBrush}"
+                                      StrokeThickness="1.3"/>
+
+                                <Line X1="13"
+                                      Y1="8"
+                                      X2="16"
+                                      Y2="8"
+                                      Stroke="{DynamicResource AccentBrush}"
+                                      StrokeThickness="1.3"/>
+
+                            </Canvas>
+
+                        </Grid>
+
+                    </Button>
+
+                </Grid>
+
+
+                <!-- TAB INDICATOR -->
+                <Border x:Name="TabIndicator"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Background="{DynamicResource AccentBrush}"/>
+
+
+                <!-- SECTION HEADER -->
+                <StackPanel Grid.Row="2"
+                            Margin="0,20,0,18">
+
+                    <TextBlock x:Name="SectionTitle"
+                               Text="WINDOWS APPS"
+                               FontSize="23"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource PrimaryTextBrush}"/>
+
+                    <TextBlock x:Name="SectionDescription"
+                               Text="Remove applications you don't need."
+                               Margin="0,5,0,0"
+                               FontSize="13"
+                               Foreground="{DynamicResource SecondaryTextBrush}"
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+
+
+                <!-- CONTENT -->
+                <Grid Grid.Row="3">
+
+                    <!-- WINDOWS APPS -->
+                    <ScrollViewer x:Name="AppsContent"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+
+                        <ScrollViewer.Resources>
+                            <Style TargetType="{x:Type ScrollBar}"
+                                   BasedOn="{StaticResource MarioslScrollBar}"/>
+                        </ScrollViewer.Resources>
+
+                        <StackPanel x:Name="AppsTweakList">
+                        </StackPanel>
+
+                    </ScrollViewer>
+
+
+                    <!-- REGISTRY -->
+                    <ScrollViewer x:Name="RegistryContent"
+                                  Visibility="Collapsed"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+
+                        <ScrollViewer.Resources>
+                            <Style TargetType="{x:Type ScrollBar}"
+                                   BasedOn="{StaticResource MarioslScrollBar}"/>
+                        </ScrollViewer.Resources>
+
+                        <StackPanel x:Name="RegistryTweakList">
+                        </StackPanel>
+
+                    </ScrollViewer>
+
+
+                    <!-- WINDOWS AI -->
+                    <ScrollViewer x:Name="WindowsAIContent"
+                                  Visibility="Collapsed"
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+
+                        <ScrollViewer.Resources>
+                            <Style TargetType="{x:Type ScrollBar}"
+                                   BasedOn="{StaticResource MarioslScrollBar}"/>
+                        </ScrollViewer.Resources>
+
+                        <StackPanel x:Name="WindowsAITweakList">
+                        </StackPanel>
+
+                    </ScrollViewer>
+
+                </Grid>
+
+            </Grid>
+
+
+            <!-- ACTION BAR -->
+            <Border Grid.Row="2"
+                    Background="{DynamicResource SurfaceBrush}"
+                    BorderBrush="{DynamicResource BorderBrush}"
+                    BorderThickness="0,1,0,0">
+
+                <Grid Margin="36,0,36,0">
+
+                    <!-- SYSTEM RESTORE -->
+                    <CheckBox x:Name="SystemRestoreCheckbox"
+                              Content="SYSTEM RESTORE POINT"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              ToolTip="Create a Windows System Restore point before applying changes."
+                              Style="{StaticResource MarioslCheckBox}"/>
+
+
+                    <!-- ACTION BUTTON -->
+                    <Button x:Name="ActionButton"
+                            Width="270"
+                            Height="30"
+                            HorizontalAlignment="Right"
+                            Content="SELECT SOMETHING"
+                            IsEnabled="False"
+                            Style="{StaticResource MarioslActionButton}"/>
+
+                </Grid>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+
+</Window>

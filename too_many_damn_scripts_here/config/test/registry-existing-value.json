@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "test.registry-existing-value",
+  "displayName": "Existing Registry Value Test",
+  "description": "Tests modifying and restoring an existing registry value.",
+  "category": "Test",
+  "riskLevel": "Low",
+  "rollbackCapability": "full",
+  "requiresElevation": false,
+  "requiresRestart": "none",
+  "status": "development",
+  "target": {
+    "type": "registry",
+	"operation": "set",
+    "path": "HKCU:\\Software\\MARIOSL\\WindowsTools\\Test",
+    "name": "TestValue",
+    "valueType": "DWord",
+    "desiredValue": 2
+  },
+  "verify": {
+    "expectedValue": 2
+  }
+}

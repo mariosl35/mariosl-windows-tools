@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "test.registry-value",
+  "displayName": "Registry Test Value",
+  "requiresElevation": false,
+  "description": "Harmless internal test operation used to validate the MARIOSL Windows Tools engine.",
+  "category": "Test",
+  "riskLevel": "Low",
+  "rollbackCapability": "full",
+  "requiresRestart": "none",
+  "status": "development",
+  "target": {
+    "type": "registry",
+	"operation": "set",
+    "path": "HKCU:\\Software\\MARIOSL\\WindowsTools\\Test",
+    "name": "TestValue",
+    "valueType": "DWord",
+    "desiredValue": 1
+  },
+  "verify": {
+    "expectedValue": 1
+  }
+}

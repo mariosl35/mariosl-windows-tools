@@ -1,0 +1,35 @@
+{
+    "schemaVersion": 1,
+    "id": "test.multi-target-failure",
+    "displayName": "Multi-Target Failure Test",
+    "requiresElevation": true,
+    "description": "Internal test for automatic rollback of partially applied bundled targets.",
+    "category": "Test",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "targets": [
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKCU:\\Software\\MARIOSL\\WindowsTools\\MultiTargetFailureTest",
+            "name": "FirstValue",
+            "valueType": "DWord",
+            "desiredValue": 1
+        },
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKCU:\\Software\\MARIOSL\\WindowsTools\\MultiTargetFailureTest",
+            "name": "SecondValue",
+            "valueType": "DWord",
+            "desiredValue": 2
+        },
+        {
+            "type": "service",
+            "operation": "set",
+            "name": "THIS_SERVICE_DOES_NOT_EXIST",
+            "startMode": "Manual"
+        }
+    ]
+}

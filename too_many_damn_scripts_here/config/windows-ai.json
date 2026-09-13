@@ -1,0 +1,122 @@
+[
+    {
+        "schemaVersion": 1,
+        "id": "windows-ai.disable-copilot-features",
+        "displayName": "Disable Copilot Features",
+        "requiresElevation": true,
+        "description": "Disables AI features integrated into supported Windows applications, including Notepad and Paint.",
+        "category": "Windows AI",
+        "riskLevel": "Low",
+        "rollbackCapability": "full",
+        "requiresRestart": "recommended",
+        "targets": [
+            {
+                "type": "registry",
+                "operation": "set",
+                "path": "HKLM:\\SOFTWARE\\Policies\\WindowsNotepad",
+                "name": "DisableAIFeatures",
+                "desiredvalue": 1,
+                "valueType": "DWord"
+            },
+            {
+                "type": "registry",
+                "operation": "set",
+                "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+                "name": "DisableCocreator",
+                "desiredvalue": 1,
+                "valueType": "DWord"
+            },
+            {
+                "type": "registry",
+                "operation": "set",
+                "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+                "name": "DisableGenerativeFill",
+                "desiredvalue": 1,
+                "valueType": "DWord"
+            },
+            {
+                "type": "registry",
+                "operation": "set",
+                "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+                "name": "DisableImageCreator",
+                "desiredvalue": 1,
+                "valueType": "DWord"
+            }
+        ]
+    },
+	{
+    "schemaVersion": 1,
+    "id": "windows-ai.disable-windows-ai-recall",
+    "displayName": "Disable Windows AI / Recall",
+    "requiresElevation": true,
+    "description": "Disables Windows Recall enablement and prevents Windows from performing AI data analysis for Recall.",
+    "category": "Windows AI",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "required",
+    "targets": [
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+            "name": "AllowRecallEnablement",
+            "desiredValue": 0,
+            "valueType": "DWord"
+        },
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+            "name": "DisableAIDataAnalysis",
+            "desiredValue": 1,
+            "valueType": "DWord"
+        }
+    ]
+},
+{
+    "schemaVersion": 1,
+    "id": "windows-ai.disable-windows-ai-integration",
+    "displayName": "Disable Windows AI Integration",
+    "requiresElevation": true,
+    "description": "Hides the Windows AI Components settings page.",
+    "category": "Windows AI",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "recommended",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "name": "SettingsPageVisibility",
+        "desiredValue": "hide:aicomponents",
+        "valueType": "String"
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "windows-ai.remove-copilot",
+    "displayName": "Remove Microsoft Copilot",
+    "requiresElevation": true,
+    "description": "Removes Microsoft Copilot where supported and disables the Windows AI Fabric service.",
+    "category": "Windows AI",
+    "riskLevel": "Low",
+    "rollbackCapability": "bestEffort",
+    "requiresRestart": "recommended",
+    "targets": [
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+            "name": "RemoveMicrosoftCopilotApp",
+            "desiredValue": 1,
+            "valueType": "DWord"
+        },
+        {
+            "type": "service",
+            "operation": "set",
+            "name": "WSAIFabricSvc",
+            "startMode": "Disabled"
+        }
+    ]
+}
+]

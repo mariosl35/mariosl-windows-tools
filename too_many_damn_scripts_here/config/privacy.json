@@ -1,0 +1,258 @@
+[
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-advertising-id",
+    "displayName": "Disable Advertising ID",
+    "requiresElevation": true,
+    "description": "Prevents Windows from using your advertising ID for personalized experiences across apps.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
+        "name": "Enabled",
+        "valueType": "DWord",
+        "desiredValue": 0
+}
+    },
+	{
+    "schemaVersion": 1,
+    "id": "privacy.disable-consumer-features",
+    "displayName": "Disable Windows Consumer Experiences",
+    "requiresElevation": true,
+    "description": "Prevents Windows from showing consumer-oriented app suggestions, promotional content, and post-setup app installations.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+        "name": "DisableWindowsConsumerFeatures",
+        "valueType": "DWord",
+        "desiredValue": 1
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-tailored-experiences",
+    "displayName": "Disable Tailored Experiences",
+    "requiresElevation": true,
+    "description": "Prevents Windows from using diagnostic data to personalize experiences and recommendations.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Privacy",
+        "name": "TailoredExperiencesWithDiagnosticDataEnabled",
+        "valueType": "DWord",
+        "desiredValue": 0
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-location",
+    "displayName": "Disable Windows Location",
+    "requiresElevation": true,
+    "description": "Forces Windows Location services off and prevents users and applications from enabling location access.",
+    "category": "Privacy",
+    "riskLevel": "Medium",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors",
+        "name": "DisableLocation",
+        "valueType": "DWord",
+        "desiredValue": 1
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-activity-history",
+    "displayName": "Disable Activity History",
+    "requiresElevation": true,
+    "description": "Disables Windows Activity History, including activity publishing and uploading.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "targets": [
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+            "name": "EnableActivityFeed",
+            "valueType": "DWord",
+            "desiredValue": 0
+        },
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+            "name": "PublishUserActivities",
+            "valueType": "DWord",
+            "desiredValue": 0
+        },
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+            "name": "UploadUserActivities",
+            "valueType": "DWord",
+            "desiredValue": 0
+        }
+    ]
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.limit-diagnostic-data",
+    "displayName": "Limit Diagnostic Data",
+    "requiresElevation": true,
+    "description": "Disables optional Windows diagnostic data collection and limits Windows diagnostic data to the required level needed for security, reliability, compatibility, and update-related functionality.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "recommended",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "AllowTelemetry",
+        "valueType": "DWord",
+        "desiredValue": 1
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-inking-and-typing-data",
+    "displayName": "Disable Inking and Typing Data Collection",
+    "requiresElevation": true,
+    "description": "Prevents Windows from collecting implicit typing and handwriting data used to improve inking, typing, and related recognition features.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "targets": [
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKCU:\\Software\\Microsoft\\InputPersonalization",
+            "name": "RestrictImplicitTextCollection",
+            "valueType": "DWord",
+            "desiredValue": 1
+        },
+        {
+            "type": "registry",
+            "operation": "set",
+            "path": "HKCU:\\Software\\Microsoft\\InputPersonalization",
+            "name": "RestrictImplicitInkCollection",
+            "valueType": "DWord",
+            "desiredValue": 1
+        }
+    ]
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-online-speech-recognition",
+    "displayName": "Disable Online Speech Recognition",
+    "requiresElevation": true,
+    "description": "Prevents Windows from sending voice input to Microsoft's online speech recognition services.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKCU:\\Software\\Microsoft\\Speech_OneCore\\Settings\\OnlineSpeechPrivacy",
+        "name": "HasAccepted",
+        "valueType": "DWord",
+        "desiredValue": 0
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-feedback-notifications",
+    "displayName": "Disable Feedback Notifications",
+    "requiresElevation": true,
+    "description": "Prevents Windows from showing notifications asking for user feedback through the Windows Feedback app.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "DoNotShowFeedbackNotifications",
+        "valueType": "DWord",
+        "desiredValue": 1
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-app-launch-tracking",
+    "displayName": "Disable App Launch Tracking",
+    "requiresElevation": true,
+    "description": "Prevents Windows from tracking which apps you launch to personalize Start and search results.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "Start_TrackProgs",
+        "valueType": "DWord",
+        "desiredValue": 0
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-suggested-content",
+    "displayName": "Disable Suggested Content",
+    "requiresElevation": true,
+    "description": "Prevents Windows from showing suggested content and recommendations in the Settings app.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "none",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+        "name": "DisableWindowsSpotlightOnSettings",
+        "valueType": "DWord",
+        "desiredValue": 1
+    }
+},
+{
+    "schemaVersion": 1,
+    "id": "privacy.disable-cloud-search",
+    "displayName": "Disable Cloud Search",
+    "requiresElevation": true,
+    "description": "Prevents Windows Search from searching cloud sources such as OneDrive and SharePoint.",
+    "category": "Privacy",
+    "riskLevel": "Low",
+    "rollbackCapability": "full",
+    "requiresRestart": "recommended",
+    "target": {
+        "type": "registry",
+        "operation": "set",
+        "path": "HKLM:\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "AllowCloudSearch",
+        "valueType": "DWord",
+        "desiredValue": 0
+    }
+}
+]

@@ -1,0 +1,15 @@
+# Local application data
+/backups/
+/logs/
+
+# PowerShell/editor temporary files
+*.tmp
+*.bak
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
